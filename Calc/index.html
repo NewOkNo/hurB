@@ -1,0 +1,117 @@
+<!DOCKTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>Forms</title>
+<script language="javascript">
+function plus(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	rezultat=peremennaja1+peremennaja2;
+	document.anketa.otvet.value=rezultat;
+}
+	
+function minus(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	rezultat=peremennaja1-peremennaja2;
+	document.anketa.otvet.value=rezultat;
+}
+function umnozit(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	rezultat=peremennaja1*peremennaja2;
+	document.anketa.otvet.value=rezultat;
+}
+function delit(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	rezultat=peremennaja1/peremennaja2;
+	document.anketa.otvet.value=rezultat;
+}
+function pow(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	rezultat = Math.pow(peremennaja1, peremennaja2);
+	document.anketa.otvet.value=rezultat;
+}
+function sqrt(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	if(isNaN(peremennaja1) || isNaN(peremennaja2))
+	{
+		rezultat = Math.sqrt(peremennaja1 || peremennaja2);
+		document.anketa.otvet.value=rezultat;
+	}
+	else
+	{
+		rez1 = Math.sqrt(peremennaja1);
+		rez2 = Math.sqrt(peremennaja2);
+		document.anketa.otvet.value="A="+rez1+";B="+rez2;
+	}	
+}
+function sin(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	if(isNaN(peremennaja1) || isNaN(peremennaja2))
+	{
+		rezultat = Math.sin((peremennaja1  * (Math.PI / 180)) || (peremennaja2  * (Math.PI / 180))).toFixed(2);
+		document.anketa.otvet.value=rezultat;
+	}
+	else
+	{
+		rez1 = Math.sin(peremennaja1  * (Math.PI / 180)).toFixed(2);
+		rez2 = Math.sin(peremennaja2  * (Math.PI / 180)).toFixed(2);
+		document.anketa.otvet.value="A = "+rez1+"; B = "+rez2;
+	}	
+}
+function cos(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	if(isNaN(peremennaja1) || isNaN(peremennaja2))
+	{
+		rezultat = Math.cos((peremennaja1  * (Math.PI / 180)) || (peremennaja2  * (Math.PI / 180))).toFixed(2);
+		document.anketa.otvet.value=rezultat;
+	}
+	else
+	{
+		rez1 = Math.cos(peremennaja1  * (Math.PI / 180)).toFixed(2);
+		rez2 = Math.cos(peremennaja2  * (Math.PI / 180)).toFixed(2);
+		document.anketa.otvet.value="A = "+rez1+"; B = "+rez2;
+	}	
+}
+function tan(){
+	peremennaja1=parseFloat(document.anketa.odin.value);
+	peremennaja2=parseFloat(document.anketa.dva.value);
+	if(isNaN(peremennaja1) || isNaN(peremennaja2))
+	{
+		rezultat = Math.tan((peremennaja1  * (Math.PI / 180)) || (peremennaja2  * (Math.PI / 180))).toFixed(2);
+		document.anketa.otvet.value=rezultat;
+	}
+	else
+	{
+		rez1 = Math.tan(peremennaja1  * (Math.PI / 180)).toFixed(2);
+		rez2 = Math.tan(peremennaja2  * (Math.PI / 180)).toFixed(2);
+		document.anketa.otvet.value="A = "+rez1+"; B = "+rez2;
+	}	
+}
+</script>
+</head>
+<body>
+<form name="anketa" method="get" action="">
+A=<input type="text" name="odin" /></br>
+B=<input type="text" name="dva" /></br>
+C=<input type="text" name="otvet" /></br>
+<input type="button" value="+" onclick="plus()" />
+<input type="button" value="-" onclick="minus()" />
+<input type="button" value="*" onclick="umnozit()" />
+<input type="button" value="/" onclick="delit()" />
+<input type="button" value="^" onclick="pow()" /> 
+<input type="button" value="sqrt" onclick="sqrt()" /> 
+</br>
+<input type="button" value="sin" onclick="sin()" /> 
+<input type="button" value="cos" onclick="cos()" />
+<input type="button" value="tan" onclick="tan()" />
+</form>
+</body>
+</html>
