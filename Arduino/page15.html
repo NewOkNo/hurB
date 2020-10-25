@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
+<title>ArduinoShish</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/color-74c9be.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+</head>
+<body>
+<div class="container-fluid p-0">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<section id="main-content" class="section hero category">
+<ol class="breadcrumbs">
+    <li title="Библиотека модулей Arduino">
+        <a href="index.html">Библиотека модулей Arduino</a>
+    </li>
+    <li title="KY-028 DIGITAL TEMPERATURE SENSOR MODULE">
+        KY-028 DIGITAL TEMPERATURE SENSOR MODULE
+    </li>
+</ol>
+  <div class="hero-inner">
+    <h1>KY-028 DIGITAL TEMPERATURE SENSOR MODULE</h1>
+    <p class="subtitle">Датчик измерения температуры.</p>
+  </div>
+</section>
+
+<div class="container" style="margin-top:30px">
+<div class="row">
+<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" alt="1col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/dub/imgd15.jpg" alt="imgd15" class="rounded">
+              <hr>
+              <span class="blocks-item-title">KY-028 DIGITAL TEMPERATURE SENSOR MODULE</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" alt="2col">
+<section class="blocks" alt="s1">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/gg/imgg15.png" alt="imgg15" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Схема подключения</span>
+            </li>
+		</ul>
+	</section>
+	<section class="blocks" alt="s2">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-description">Цифровой датчик температуры KY-028 для Arduino, он измеряет изменения температуры на основе сопротивления термистора. Этот модуль имеет как цифровые, так и аналоговые выходы, есть потенциометр для регулировки порога обнаружения на цифровом интерфейсе.</span>
+              <hr>
+              <span class="blocks-item-title">Описание</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-12" alt="3col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-title">Код</span>
+			  <hr>
+              <pre style="text-align: left"><code class="hljs">
+int led = 13; // define the LED pin
+int digitalPin = 2; // KY-028 digital interface
+int analogPin = A0; // KY-028 analog interface
+int digitalVal; // digital readings
+int analogVal; //analog readings
+
+void setup()
+{
+  pinMode(led, OUTPUT);
+  pinMode(digitalPin, INPUT);
+  //pinMode(analogPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  // Read the digital interface
+  digitalVal = digitalRead(digitalPin); 
+  if(digitalVal == HIGH) // if temperature threshold reached
+  {
+    digitalWrite(led, HIGH); // turn ON Arduino's LED
+  }
+  else
+  {
+    digitalWrite(led, LOW); // turn OFF Arduino's LED
+  }
+
+  // Read the analog interface
+  analogVal = analogRead(analogPin); 
+  Serial.println(analogVal); // print analog value to serial
+
+  delay(100);
+}
+</code></pre>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

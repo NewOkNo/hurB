@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
+<title>ArduinoShish</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/color-74c9be.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+</head>
+<body>
+<div class="container-fluid p-0">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<section id="main-content" class="section hero category">
+<ol class="breadcrumbs">
+    <li title="Библиотека модулей Arduino">
+        <a href="index.html">Библиотека модулей Arduino</a>
+    </li>
+    <li title="KY-039 Finger Detection Heartbeat Sensor">
+        KY-039 Finger Detection Heartbeat Sensor
+    </li>
+</ol>
+  <div class="hero-inner">
+    <h1>KY-039 Finger Detection Heartbeat Sensor</h1>
+    <p class="subtitle">Датчик сердцебиения.</p>
+  </div>
+</section>
+
+<div class="container" style="margin-top:30px">
+<div class="row">
+<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" alt="1col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/dub/imgd9.png" alt="imgd9" class="rounded">
+              <hr>
+              <span class="blocks-item-title">KY-039 Finger Detection Heartbeat Sensor</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" alt="2col">
+<section class="blocks" alt="s1">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/gg/imgg9.png" alt="imgg9" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Схема подключения</span>
+            </li>
+		</ul>
+	</section>
+	<section class="blocks" alt="s2">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-description">Данный "KY-039 Finger Detection Heartbeat Sensor" модуль использует яркий инфракрасный (ИК) светодиод и фототранзистор для обнаружения пульса пальца. Красный светодиод мигает с каждым импульсом.</span>
+              <hr>
+              <span class="blocks-item-title">Описание</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-12" alt="3col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-title">Код</span>
+			  <hr>
+              <pre style="text-align: left"><code class="hljs">
+// Pulse Monitor Test Script
+int sensorPin = 0;
+double alpha = 0.75;
+int period = 100;
+double change = 0.0;
+double minval = 0.0;
+void setup ()
+{
+Serial.begin (9600);
+}
+void loop ()
+{
+static double oldValue = 0;
+static double oldChange = 0;
+
+int rawValue = analogRead (sensorPin);
+double value = alpha * oldValue + (1 – alpha) * rawValue;
+
+Serial.print (rawValue);
+Serial.print (“,”);
+Serial.println (value);
+oldValue = value;
+
+delay (period);
+}
+</code></pre>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

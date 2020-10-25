@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
+<title>ArduinoShish</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/color-74c9be.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+</head>
+<body>
+<div class="container-fluid p-0">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<section id="main-content" class="section hero category">
+<ol class="breadcrumbs">
+    <li title="Библиотека модулей Arduino">
+        <a href="index.html">Библиотека модулей Arduino</a>
+    </li>
+    <li title="KY-003 Arduino Hall Magnetic Sensor">
+        KY-003 Arduino Hall Magnetic Sensor
+    </li>
+</ol>
+  <div class="hero-inner">
+    <h1>KY-003 Arduino Hall Magnetic Sensor</h1>
+    <p class="subtitle">Датчик Холла (датчик магнитного поля).</p>
+  </div>
+</section>
+
+<div class="container" style="margin-top:30px">
+<div class="row">
+<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" alt="1col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/dub/imgd6.jpg" alt="imgd6" class="rounded">
+              <hr>
+              <span class="blocks-item-title">KY-003 Arduino Hall Magnetic Sensor</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" alt="2col">
+<section class="blocks" alt="s1">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/gg/imgg6.png" alt="imgg6" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Схема подключения</span>
+            </li>
+		</ul>
+	</section>
+	<section class="blocks" alt="s2">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-description">KEYES KY-003 Модуль магнитного датчика Холла Arduino - это переключатель, который будет включаться / выключаться при наличии магнитного поля. Магнитный датчик Холла KY-003 состоит из чувствительного переключателя на эффекте Холла 3144EUA-S для работы при высоких температурах, резистора 680 Ом и светодиода. Совместимо с популярными электронными платформами, такими как Arduino и Raspberry Pi.</span>
+              <hr>
+              <span class="blocks-item-title">Описание</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-12" alt="3col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-title">Код</span>
+			  <hr>
+              <pre style="text-align: left"><code class="hljs">
+int led = 13;//LED pin
+int sensor = 3; //sensor pin
+int val; //numeric variable
+
+void setup()
+{
+	pinMode(led, OUTPUT); //set LED pin as output
+	pinMode(sensor, INPUT); //set sensor pin as input
+}
+
+void loop()
+{
+	val = digitalRead(sensor); //Read the sensor
+	if(val == LOW) //when magnetic field is detected, turn led on
+	{
+		digitalWrite(Led, HIGH);
+	}
+	else
+	{
+		digitalWrite(Led, LOW);
+	}
+}
+</code></pre>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

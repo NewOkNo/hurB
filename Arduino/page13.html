@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
+<title>ArduinoShish</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/color-74c9be.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+</head>
+<body>
+<div class="container-fluid p-0">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<section id="main-content" class="section hero category">
+<ol class="breadcrumbs">
+    <li title="Библиотека модулей Arduino">
+        <a href="index.html">Библиотека модулей Arduino</a>
+    </li>
+    <li title="KY-037 Voice Sound Detection Sensor">
+        KY-037 Voice Sound Detection Sensor
+    </li>
+</ol>
+  <div class="hero-inner">
+    <h1>KY-037 Voice Sound Detection Sensor</h1>
+    <p class="subtitle">Датчик определения звука.</p>
+  </div>
+</section>
+
+<div class="container" style="margin-top:30px">
+<div class="row">
+<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" alt="1col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/dub/imgd13.jpg" alt="imgd13" class="rounded">
+              <hr>
+              <span class="blocks-item-title">KY-037 Voice Sound Detection Sensor</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" alt="2col">
+<section class="blocks" alt="s1">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/gg/imgg13.jpg" alt="imgg13" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Схема подключения</span>
+            </li>
+		</ul>
+	</section>
+	<section class="blocks" alt="s2">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-description">Этот "KY-037 Voice Sound Detection Sensor" модуль состоит из чувствительного емкостного микрофона для обнаружения звука и схемы усилителя. Выход этого модуля является как аналоговым, так и цифровым. Цифровой выход действует как ключ, и он активируется, когда интенсивность звука достигает определенного порога. Порог чувствительности можно отрегулировать с помощью потенциометра на датчике. Напряжение аналогового выхода изменяется в зависимости от интенсивности звука, воспринимаемого микрофоном. Вы можете подключить этот выход к аналоговым контактам Arduino и обработать выходное напряжение.</span>
+              <hr>
+              <span class="blocks-item-title">Описание</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-12" alt="3col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-title">Код</span>
+			  <hr>
+              <pre style="text-align: left"><code class="hljs">
+int sensor_value = 0;
+int threshold = 540; //Enter Your threshold value here
+int abs_value = 0;
+int ledCount = 10; //number of Bargraph LEDs
+int bargraph[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}; // Bargraph pins
+void setup() {
+Serial.begin(9600); // setup serial
+for (int i = 0; i <= ledCount; i++) // Define bargraph pins OUTPUT
+{
+pinMode(bargraph[i], OUTPUT);
+}
+for (int i = 0; i <= 9; i++)
+{
+digitalWrite(i, LOW);
+}
+}
+void loop() {
+sensor_value = analogRead(A0);
+abs_value = abs(sensor_value - threshold);
+int ledLevel = map(abs_value, 0, (1024 - threshold), 0, ledCount);
+for (int i = 0; i < ledCount; i++) {
+// if the array element's index is less than ledLevel,
+// turn the pin for this element on:
+if (i < ledLevel) {
+digitalWrite(bargraph[i], HIGH);
+Serial.println(i);
+}
+// turn off all pins higher than the ledLevel:
+else {
+digitalWrite(bargraph[i], LOW);
+}
+}
+}
+</code></pre>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

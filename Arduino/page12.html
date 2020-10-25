@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" >
+<title>ArduinoShish</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/colors/color-74c9be.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+</head>
+<body>
+<div class="container-fluid p-0">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<section id="main-content" class="section hero category">
+<ol class="breadcrumbs">
+    <li title="Библиотека модулей Arduino">
+        <a href="index.html">Библиотека модулей Arduino</a>
+    </li>
+    <li title="Aoicrie DFPlayer Mini MP3 Player">
+        Aoicrie DFPlayer Mini MP3 Player
+    </li>
+</ol>
+  <div class="hero-inner">
+    <h1>Aoicrie DFPlayer Mini MP3 Player</h1>
+    <p class="subtitle">MP3 проигрыватель с адаптером карты памяти.</p>
+  </div>
+</section>
+
+<div class="container" style="margin-top:30px">
+<div class="row">
+<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" alt="1col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/dub/imgd12.jpg" alt="imgd12" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Aoicrie DFPlayer Mini MP3 Player</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" alt="2col">
+<section class="blocks" alt="s1">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <img src="img/gg/imgg12.jpg" alt="imgg12" class="rounded">
+              <hr>
+              <span class="blocks-item-title">Схема подключения</span>
+            </li>
+		</ul>
+	</section>
+	<section class="blocks" alt="s2">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-description">DFPlayer Mini - это небольшой и недорогой проигрыватель MP3-модулей с упрощенным выводом напрямую на динамик. Модуль может использоваться как автономный модуль с прикрепленной батареей, динамиком и кнопками или использоваться в сочетании с Arduino UNO или любым другим с возможностями RX / TX. DFPlayer отлично интегрирует модуль жесткого декодирования через простой последовательный порт, который поддерживает распространенные аудиоформаты, вы можете воспроизводить назначенную музыку без каких-либо других утомительных базовых операций. В модуль прекрасно интегрировано аппаратное декодирование MP3, WAV, WMA. SPECIFICATION Supported sampling rates (kHz): 8 / 11.025 / 12/16 / 22.05 / 24/32 / 44.1 / 48 , 24-bit DAC output, support dynamic range: 90dB, SNR support: 85dB. Программное обеспечение поддерживает драйвер TF-карты, максимальная поддержка 32G TF-карты; поддержка файловой системы FAT16, FAT32; поддержка 32 г U диска; 64 Мбайт NORFLASH.</span>
+              <hr>
+              <span class="blocks-item-title">Описание</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-12" alt="3col">
+<section class="blocks">
+      <ul class="blocks-list">
+            <li class="blocks-item">
+              <span class="blocks-item-title">Код</span>
+			  <hr>
+              <pre style="text-align: left"><code class="hljs">
+int gassensorSPin = 8;//connect S pin to digital 8 pin 
+int gassensorAPin = 0;//connect A pin to analog 0 pin
+
+void setup() 
+{                
+  pinMode(gassensorSPin,INPUT);//initialize the MQ-2 gas sensor S pin as input
+  pinMode(gassensorAPin,INPUT);//initialize the MQ-2 gas sensor A pin as input
+  Serial.begin(9600);   // opens serial port, sets data rate to 9600 bps
+}
+void loop() 
+{
+  if(digitalRead(gassensorSPin)==HIGH){
+    Serial.print("Methane gas is not detected.   Analog data:"); //send data to the serial monitor
+  }else{
+    Serial.print("Methane gas is detected.       Analog data:");   //send data to the serial monitor
+  }
+  Serial.println(analogRead(0));         //send analog data(A pin) to the serial monitor
+  delay(50);
+}
+</code></pre>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>
