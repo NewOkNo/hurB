@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>form</title>
+<style>
+.shur {display:none;}
+
+input, label {
+  margin: 5px 5px;
+}
+
+.form-group {
+  width: 450px;
+}
+
+.form-control {
+  float: left;
+}
+
+#inputStreet {
+  width: 100%;
+}
+
+#inputCity {
+  width: 50%;
+}
+
+#inputState {
+  width: 15%;
+}
+
+#inputZip {
+  width: 28%;
+}
+
+#inputCounty {
+  width: 45%;
+}
+
+#inputCountry {
+  width: 50%;
+}
+</style>
+<script language="javascript">
+function showAvtomat(n) {
+if(n>0) {
+document.getElementById("avt").style.display="block";
+}
+else{
+document.getElementById("avt").style.display="none";
+}
+}
+
+var placeSearch, autocomplete;
+
+// List all address components (corresponds to form field IDs and Google address object)
+var componentForm = {
+  autocomplete: ['street_number', 'route'],
+  inputCity: 'locality',
+  inputState: 'administrative_area_level_1',
+  inputZip: 'postal_code',
+  inputCounty: 'administrative_area_level_2',
+  inputCountry: 'country'
+};
+
+// Create autocomplete object based on the autocomplete ("street") field
+// Location type restricted to geocode
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */ (document.getElementById('autocomplete')),
+      {type: ['geocode']});
+
+  // Call fillInAddress when user selects an address from dropdown
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+// Fill fields with values from Google Maps autocomplete object
+function fillInAddress() {
+
+  // Get place data from autocomplete object
+  var place = autocomplete.getPlace();
+  console.log(place);
+  
+  // Enable each field, then fill them with the corresponding value from the place object
+  for (var component in componentForm) {
+    document.getElementById(component).disabled = false;
+    document.getElementById(component).value = search(componentForm[component], place.address_components);
+  }
+
+  // Original Google Implementation - do not use
+  // Get each component of the address from the place
+  // object and fill the corresponding field
+//   for (var i = 0; i < place.address_components.length; i++) {
+
+//     var addressType = place.address_components[i].types[0];
+
+//     if (componentForm[addressType]) {
+//       var val = place.address_components[i][componentForm[addressType]];
+//       document.getElementById(addressType).value = val;
+//     }
+//   }
+  
+  // Fill the autocomplete field with values from the place object
+  // If a street number is not found, set the field to route only.
+  if (search("street_number", place.address_components) != "") {
+    document.getElementById("autocomplete").value = search("street_number", place.address_components) + " ";
+  }
+  document.getElementById("autocomplete").value += search("route", place.address_components);
+  
+  // Search the passed object for a specified address component/type and return the short_name value of the matched component/type
+  // If requested type does not exist in the placeObject, return an empty string
+  function search(type, placeObject) {
+    for (var i = 0; i < placeObject.length; i++) {
+      if (placeObject[i].types[0] === type) {
+        return placeObject[i].short_name;
+      } else if (i === placeObject.length - 1) {
+        return "";
+      }
+    }
+  }
+}
+
+</script>
+</head>
+<body>
+<form>
+  <label for="lname">Фамилия:</label><br>
+  <input type="text" id="lname" name="lname"><br><br>
+  
+  <label for="fname">Имя:</label><br>
+  <input type="text" id="fname" name="fname"><br><br>
+  
+  <label for="code">Персональный код:</label><br>
+  <input type="text" id="code" name="code" pattern="[0-9]{11}"><br><br>
+  
+  <label for="start">Дата рождения:</label><br>
+  <input type="date" id="start" name="trip-start"
+       value="yyyy-mm-dd"
+       min="1900-01-01" max="2020-11-2">
+  </input><br><br>
+  
+  <label for="tovartype">Пол</label><br>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Мужской</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Женский</label><br>
+  <input type="radio" id="other" name="gender" value="other">
+  <label for="other">Другое</label><br><br>
+  
+  <label for="tovartype">Отметка о том, что ему больше 18 лет</label><br>
+  <input type="checkbox" id="ch" name="acc" value="ch">
+  <label for="ch">Мне больше 18 лет</label><br><br>
+  
+  <label for="tovartype">Выбор варианта предоставляемого товара</label><br>
+  <input type="radio" id="tovar1" name="tovar" value="tovar1">
+  <label for="tovar">Мебель</label><br>
+  <input type="radio" id="tovar2" name="tovar" value="tovar2">
+  <label for="tovar">Игрушки</label><br>
+  <input type="radio" id="tovar3" name="tovar" value="tovar3">
+  <label for="tovar">Одежда</label><br>
+  <input type="radio" id="tovar4" name="tovar" value="tovar4">
+  <label for="tovar">Другое...</label><br><br>
+  
+  <label for="tovartype">Выбор варианта доставки</label><br>
+  <input type="radio" id="dostavka1" name="dostavka" value="dostavka1" onclick="showAvtomat(0)">
+  <label for="dostavka">Прислать по почте</label><br>
+  <input type="radio" id="dostavka2" name="dostavka" value="dostavka2" onclick="showAvtomat(1)">
+  <label for="dostavka">Заберу из почтового автомата</label><br>
+  <input type="radio" id="dostavka3" name="dostavka" value="dostavka3" onclick="showAvtomat(0)">
+  <label for="dostavka">Заберу сам из представительства</label><br><br>
+  
+  <div id="avt" class="shur">
+  <form>
+	<label for="tovartype">Выбор варианта почтового автомата доставки</label><br>
+	<input type="radio" id="avtomat1" name="avtomat" value="avtomat1">
+	<label for="avtomat">LasnPost</label><br>
+	<input type="radio" id="avtomat2" name="avtomat" value="avtomat2">
+	<label for="avtomat">KosmosPost</label><br>
+	<input type="radio" id="avtomat3" name="avtomat" value="avtomat3">
+	<label for="avtomat">BruhPost</label><br>
+	<input type="radio" id="avtomat4" name="avtomat" value="avtomat4">
+	<label for="avtomat">другие...</label><br><br>
+  </form>
+  </div>
+  
+  <label for="tovartype">Указание адреса доставки с почтовым индексо</label><br>
+  <div class="form-group">
+  <input type="street" 
+         class="form-control" 
+         id="autocomplete" 
+         placeholder="Street"></input>
+  
+  <input type="city" 
+         class="form-control" 
+         id="inputCity" 
+         placeholder="City"></input>
+  
+  <input type="state" 
+         class="form-control" 
+         id="inputState" 
+         placeholder="State"></input>
+  
+  <input type="zip" 
+         class="form-control" 
+         id="inputZip" 
+         placeholder="Zip"></input>
+  
+  <input type="county" 
+         class="form-control" 
+         id="inputCounty" 
+         placeholder="County"></input>
+  
+  <input type="country" 
+         class="form-control" 
+         id="inputCountry" 
+         placeholder="Country"></input><br><br><br><br><br><br>
+	</div>
+	
+  <label for="start">Выбор даты начала периода получения товара:</label><br>
+  <input type="date" id="start" name="trip-start"
+       value="yyyy-mm-dd"
+       min="1900-01-01" max="2020-11-2"><br><br>
+  </input>
+  
+  <label for="appt">Выбор времени начала периода получения товара:</label><br>
+  <input type="time" id="appt" name="appt"
+       min="00:00" max="23:59" required><br><br>
+  </input>
+  
+  <label for="start">Выбор даты конца периода получения товара:</label><br>
+  <input type="date" id="start" name="trip-start"
+       value="yyyy-mm-dd"
+       min="1900-01-01" max="2020-11-2"><br><br>
+  </input>
+  
+  <label for="appt">Выбор времени конца периода получения товара:</label><br>
+  <input type="time" id="appt" name="appt"
+       min="00:00" max="23:59" required><br><br>
+  </input>
+  
+  <label for="email">Адрес электронной почты:</label>
+  <input type="email" id="email" name="email"><br><br>
+  
+  <label for="phone">Номер телефона с кодом:</label>
+  <input type="tel" id="phone" name="phone" pattern="\+[0-9]{3}[0-9]{8}" placeholder="+37211112222"><br><br>
+  
+  <label for="tovartype">Другой способ связи</label><br>
+  <input type="checkbox" id="svaz1" name="svaz" value="svaz1">
+  <label for="svaz">Discord:</label>
+  <input type="text" id="code" name="code" placeholder="Name#1234"><br>
+  <input type="checkbox" id="svaz2" name="svaz" value="svaz2">
+  <label for="svaz">Skype:</label>
+  <input type="text" id="code" name="code" placeholder="Name"><br>
+  <input type="checkbox" id="svaz3" name="svaz" value="svaz3">
+  <label for="svaz">Другое:</label>
+  <input type="text" id="code" name="code"><br><br>
+  
+  <label for="tovartype">Согласие с правилами предоставления услуги</label><br>
+  <input type="checkbox" id="ch" name="rulacc" value="ch">
+  <label for="ch">Я согласен с правилами предоставления услуги</label><br><br>
+  
+  
+</form>
+</body>
+</html>
