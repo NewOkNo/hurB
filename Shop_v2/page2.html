@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>hurB.</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="moiStili.css" />
+<script language="javascript">
+function microTest1(){
+errorMessage='';
+	if(document.getElementById("firstName").value==""){
+		errorMessage+='<h3>Вы не указали имя!</h3>';
+	}
+	if(document.getElementById("checkAdult").checked!=""){
+		//document.getElementById("formButtonOk").disabled="";
+	}
+	if(document.getElementById("checkAdult").checked==""){
+		errorMessage+='<h3>Вы не отметили свой возраст!</h3>';
+		//document.getElementById("checkAdult").focus();
+		//document.getElementById("formButtonOk").disabled="disabled";
+	}
+}	
+function checkThisOut(){
+	if(errorMessage!=''){
+		document.getElementById("modalText").innerHTML=errorMessage;
+		$('#myModal').modal('show');
+	}
+}
+
+function imgBorderFunc(n){
+	N=9;
+	for(i=1;i<=N;i++){
+		document.getElementById("img"+i).classList.remove('active');
+	}
+	document.getElementById("img"+n).classList.add('active');
+}
+
+function imgMainFunc(n){
+	var bruh = document.getElementById("img"+n).getElementsByTagName("img");
+	document.getElementById("imgMain").src = bruh[0].getAttribute('src');
+	
+	if(n>6){
+		if(document.getElementById("img"+n).classList.contains('active2')){
+			document.getElementById("img"+n).classList.remove('active2');
+		}
+		else{
+			document.getElementById("img"+n).classList.add('active2');
+		}
+	}
+}
+
+function showWin() {
+	var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	
+	N=3;
+	for(i=1;i<=N;i++){
+		document.getElementById("var"+i).style.display="none";
+	}
+	document.getElementById("var"+selectedValue).style.display="block";
+}
+
+</script>
+</head>
+<body>
+<div class="container-fluid p-0">
+<!--// начало всего сайта //-->
+
+<div class="hero img-fluid" alt="startimg">
+<a href="https://www.google.com/">
+</br>
+</br>
+</br>
+</br>
+</br>
+</a>
+</div>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.html">hurB.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+
+<div class="container my-2">
+<div class="row">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 px-1" alt="1col">
+	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary">Новые товары</button>
+    <button type="button" class="btn btn-secondary">Популярные товары</button>
+    <button type="button" class="btn btn-secondary">Товары со скидкой</button>
+  </div>
+  </div>
+</div>
+</div>
+<div class="row">
+<div class="">
+<div class="input-group py-1">
+<div class="tovarinfo">
+<div class="container">
+<div class="row">
+	<div class="col-5">
+		<div class="row">
+			<img id="imgMain" src="https://ae01.alicdn.com/kf/Hcc4099b459e946ed9d10be2e04ec436cD/-.jpg_Q90.jpg_.webp">
+		</div>
+		<div class="row imgSec py-2 px-3">
+			<div class="col px-0" onmouseover="imgBorderFunc(1),imgMainFunc(1)">
+				<div class="imgPicker" id="img1">
+					<img src="https://ae01.alicdn.com/kf/Hcc4099b459e946ed9d10be2e04ec436cD/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(2),imgMainFunc(2)">
+				<div class="imgPicker" id="img2">
+					<img src="https://ae01.alicdn.com/kf/Hb0a9fa89619b42c28692dcb835dbabadz/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(3),imgMainFunc(3)">
+				<div class="imgPicker" id="img3">
+					<img src="https://ae01.alicdn.com/kf/H5023885611eb4908bad559fe63629bbf6/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(4),imgMainFunc(4)">
+				<div class="imgPicker" id="img4">
+					<img src="https://ae01.alicdn.com/kf/H7330f19c20f04f7c984a4268abc52ee5u/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(5),imgMainFunc(5)">
+				<div class="imgPicker" id="img5">
+					<img src="https://ae01.alicdn.com/kf/H24f7ec47d2ef41a6ae755fc5912f83e5g/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(6),imgMainFunc(6)">
+				<div class="imgPicker" id="img6">
+					<img src="https://ae01.alicdn.com/kf/H00d2107a541f4e8c85b7e91ed14b2594m/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pl-3 col-7">
+		<div class="row m-2">
+			<h5 style="text-align: center;" id="tovarName">(Название)</h5>
+		</div>
+		<hr>
+		<div class="row m-2">
+			<h6 style="text-align: center;" id="modifications">Модификации:</h6>
+		</div>
+		<div class="row m-0" style="padding-right:50%">
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(7)" onClick="imgMainFunc(7)">
+				<div class="imgPicker" id="img7">
+					<img src="https://ae01.alicdn.com/kf/H7330f19c20f04f7c984a4268abc52ee5u/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(8)" onClick="imgMainFunc(8)">
+				<div class="imgPicker" id="img8">
+					<img src="https://ae01.alicdn.com/kf/H5023885611eb4908bad559fe63629bbf6/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+			<div class="col pr-0 pl-2" onmouseover="imgBorderFunc(9)" onClick="imgMainFunc(9)">
+				<div class="imgPicker" id="img9">
+					<img src="https://ae01.alicdn.com/kf/H00d2107a541f4e8c85b7e91ed14b2594m/-.jpg_Q90.jpg_.webp">
+				</div>
+			</div>
+		</div>
+		<div class="row m-2">
+			<p id="infoText">(Описание)</p>
+		</div>
+		<div class="row m-2">
+			<div class="btn-group" role="group" aria-label="Third group">
+				<button type="button" class="btn btn-secondary align-bottom">Купить</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row my-3 reg">
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img1" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img2" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img3" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img4" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img5" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img6" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+<div class="row my-3 reg">
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img1" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img2" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img3" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img4" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img5" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img6" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+<div class="row my-3 reg">
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img1" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img2" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img3" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img4" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img5" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img6" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+<div class="row my-3 reg">
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img1" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img2" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img3" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img4" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img5" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+<div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 p-2" alt="1col">
+  <section class="blocks">
+      <ul class="blocks-list m-0">
+            <li class="blocks-item m-0">
+              <a href="page2.html">
+                <img src="" alt="img6" class="rounded">
+              </a>
+              <hr>
+              <span class="blocks-item-title">(Название)</span>
+			  <span class="blocks-item-description" style="text-align:right">Цена</span>
+            </li>
+		</ul>
+	</section>
+</div>
+</div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>Различная информация(включая информацию о работе организации)</p>
+</div>
+
+</div>
+<script language="javascript" src="js/jquery-3.5.1.slim.min.js"></script>
+<script language="javascript" src="js/popper.min.js"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>
