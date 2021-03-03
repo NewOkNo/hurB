@@ -80,12 +80,19 @@
 						if ($(this).find('SERVICE_HOURS').text()!=''){
 							$hv = $(this).find('SERVICE_HOURS').text();
 						}
+						$tip = 'No information';
+						if ($(this).find('TYPE').text()=='0'){
+							$tip = 'Почтовый автомат';
+						}
+						else if ($(this).find('TYPE').text()=='1'){
+							$tip = 'Почтовое отделение';
+						}
                         $('#tableBody').append(
                             '<tr>' +
                                 '<td>' +
                                     $(this).find('NAME').text() + '</td> ' +
                                 '<td>' +
-                                    $(this).find('TYPE').text() + '</td> ' +
+                                    $tip + '</td> ' +
                                 '<td>' +
                                     'Страна: ' + $strana + ' Регион: ' + $region + ' Город: ' + $gorod + ' Улица: ' + $ulica + ' Дом: ' + $dom + '</td> ' +
                                 '<td>' +
