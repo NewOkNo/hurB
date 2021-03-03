@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Read XML Data Using jQuery Ajax and Load it in HTML table</title>
+    <!--Include Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+      <!--Include jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <p>
+      Click button to Read XML and Show it in HTML
+    </p>
+
+    <input type="button" value="Read XML" id="btn" />
+    <table class="table table-condensed table-hovered table-striped">
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Genre</th>
+          <th>Price</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        
+      </tbody>
+    
+    </table>
+</body>
+
+<script>
+    $(document).ready(function() {
+        //jQuery on button click Call
+        $('#btn').click(function () {
+        
+            $('#tableBody').empty();       // Clear the table body.
+            //ajax call to load XML and parse it
+			$.ajax({
+                type: 'GET',
+                url: 'https://www.omniva.ee/locations.xml',           // The file path.
+                dataType: 'xml',    
+                success: function(xml) {
+                   //find all book tags, loop them and append to table body
+                    $(xml).find('LOCATION').each(function() {
+                        
+                        // Append new data to the tbody element.
+                        $('#tableBody').append(
+                            '<tr>' +
+                                '<td>' +
+                                    $(this).find('NAME').text() + '</td> ' +
+                                '<td>' +
+                                    $(this).find('TYPE').text() + '</td> ' +
+                                '<td>' +
+                                    $(this).find('A5_NAME').text() + '</td> ' +
+                                    '<td>' +
+                                    $(this).find('A7_NAME').text() + '</td> ' +
+                                    '<td>' +
+                                    $(this).find('SERVICE_HOURS').text() + '</td> ' +
+                            '</tr>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+</html>
