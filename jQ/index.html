@@ -50,6 +50,36 @@
                     $(xml).find('LOCATION').each(function() {
                         
                         // Append new data to the tbody element.
+						$strana = 'No information';
+						if ($(this).find('A0_NAME').text()=='EE'){
+							$strana = 'Estonia';
+						}
+						else if ($(this).find('A0_NAME').text()=='LV'){
+							$strana = 'Latvia';
+						}
+						else if ($(this).find('A0_NAME').text()=='LT'){
+							$strana = 'Lithuania';
+						}
+						$region = 'No information';
+						if ($(this).find('A1_NAME').text()!=''){
+							$region = $(this).find('A1_NAME').text();
+						}
+						$gorod = 'No information';
+						if ($(this).find('A2_NAME').text()!=''){
+							$gorod = $(this).find('A2_NAME').text();
+						}
+						$ulica = 'No information';
+						if ($(this).find('A5_NAME').text()!=''){
+							$ulica = $(this).find('A5_NAME').text();
+						}
+						$dom = 'No information';
+						if ($(this).find('A7_NAME').text()!=''){
+							$dom = $(this).find('A7_NAME').text();
+						}
+						$hv = 'No information';
+						if ($(this).find('SERVICE_HOURS').text()!=''){
+							$hv = $(this).find('SERVICE_HOURS').text();
+						}
                         $('#tableBody').append(
                             '<tr>' +
                                 '<td>' +
@@ -57,9 +87,9 @@
                                 '<td>' +
                                     $(this).find('TYPE').text() + '</td> ' +
                                 '<td>' +
-                                    $(this).find('A5_NAME').text() + ' ' + $(this).find('A7_NAME').text() + '</td> ' +
+                                    'Страна: ' + $strana + ' Регион: ' + $region + ' Город: ' + $gorod + ' Улица: ' + $ulica + ' Дом: ' + $dom + '</td> ' +
                                 '<td>' +
-                                    $(this).find('SERVICE_HOURS').text() + '</td> ' +
+                                    $hv + '</td> ' +
                             '</tr>');
                     });
                 }
