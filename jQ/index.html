@@ -14,18 +14,17 @@
 <body>
 
     <p>
-      Click button to Read XML and Show it in HTML
+      Нажмите на кнопку, чтобы увидеть информацию об автоматах Omniva
     </p>
 
-    <input type="button" value="Read XML" id="btn" />
+    <input type="button" value="Клик" id="btn" />
     <table class="table table-condensed table-hovered table-striped">
       <thead>
         <tr>
-          <th>Author</th>
-          <th>Title</th>
-          <th>Genre</th>
-          <th>Price</th>
-          <th>Description</th>
+          <th>Название</th>
+          <th>Тип</th>
+          <th>Адрес</th>
+          <th>Время работы</th>
         </tr>
       </thead>
       <tbody id="tableBody">
@@ -58,10 +57,8 @@
                                 '<td>' +
                                     $(this).find('TYPE').text() + '</td> ' +
                                 '<td>' +
-                                    $(this).find('A5_NAME').text() + '</td> ' +
-                                    '<td>' +
-                                    $(this).find('A7_NAME').text() + '</td> ' +
-                                    '<td>' +
+                                    $(this).find('A5_NAME').text() + $(this).find('A7_NAME').text() + '</td> ' +
+                                '<td>' +
                                     $(this).find('SERVICE_HOURS').text() + '</td> ' +
                             '</tr>');
                     });
