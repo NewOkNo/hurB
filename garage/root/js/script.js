@@ -50,7 +50,7 @@ function moveToSignUp() {
     location.replace("../pages/signUp.html")
 }
 function goToStart() {
-    location.replace("/hurB/root/pages/strt.html")
+    location.replace("/hurB/garage/root/pages/strt.html")
 }
 function goToWiper(){
     location.replace("../pages/wiper.html")
