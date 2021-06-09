@@ -44,25 +44,25 @@ $(".btn").on("click", function(){
 
 function moveToSignIn() {
     console.log("here");
-    location.replace("/root/pages/signIn.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/signIn.html")
 }
 function moveToSignUp() {
-    location.replace("/root/pages/signUp.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/signUp.html")
 }
 function goToStart() {
-    location.replace("pages/strt.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/strt.html")
 }
 function goToWiper(){
-    location.replace("/root/pages/wiper.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/wiper.html")
 }
 function goToInfo(){
-    location.replace("/root/pages/info.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/info.html")
 }
 function goBack() {
     window.history.back();
 }
 function goToCamera(){
-    location.replace("/root/pages/camera.html")
+    location.replace("https://newokno.github.io/hurB/garage/root/pages/camera.html")
 }
 
 /*$(".arrow").on("click", function(){
