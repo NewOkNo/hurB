@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'Averta CY';
+    font-weight: 300;
+    src: url('../fonts/AvertaCY-Light.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Averta CY';
+    font-weight: 400;
+    src: url('../fonts/AvertaCY-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Averta CY';
+    font-weight: 500;
+    src: url('../fonts/AvertaCY-Semibold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Averta CY';
+    font-weight: 700;
+    src: url('../fonts/AvertaCY-Bold.woff2') format('woff2');
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+
+  &::after{
+    outline: none;
+  }
+
+}
+
+body {
+    background-color: #CEE6B4;
+    font-family: 'Averta CY';
+    font-weight: 700;
+    color: #1F441E;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    //height: 100vh;
+
+    .header {
+        margin: 80px 80px 0;
+        //width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .logo {
+            margin-left: 0;
+            width: 20vw;
+            height: auto;
+        }
+
+        .nav-bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-weight: 400;
+            font-size: 1.3em;
+            margin-left: auto;
+            margin-right: 20px;
+            
+            a {
+                color: #1F441E;
+                text-decoration: none;
+                
+                &:nth-child(3) {
+                    span {
+                        margin-right: 0;
+                    }
+                    
+                }
+
+                span {
+                    margin-right: 5em;
+                    transition: 1s;
+
+                    &:hover {
+                        border-bottom: 1px #1F441E solid;
+                    }
+                }
+            }
+            
+        }
+        
+        .search-container {
+            margin-right: 0;
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .search {
+
+                .search-inp {
+                    border-radius: 30px;
+                    border: none;
+                    background-color: #9ECCA4;
+                    padding: 7px 25px;
+                    outline: none;
+                    font-family: 'Averta CY';
+                    font-weight: 400;
+                    font-size: 1.1em;
+
+                    &::placeholder {
+                        font-size: 1.1em;
+                        color: #1F441E;
+                        font-family: 'Averta CY';
+                        font-weight: 300;
+                    }
+                }
+                .search-btn {
+                    border-radius: 7px;
+                    border: none;
+                    padding: 7px 15px;
+                    margin-left: 10px;
+                    background-color: #1F441E;
+                    color: white;
+                    font-family: 'Averta CY';
+                    font-weight: 400;
+                    font-size: 1.1em;
+                    transition: .3s;
+
+                    &:hover {
+                        transform: scale(.9);
+                    }
+                }
+            }
+            .user {
+                margin-left: 25px;
+            }
+            .tags {
+                display: none;
+            }
+        }
+
+        /*.srchRemote{
+            
+                .p{text-decoration: none;}
+
+                .sheesh{
+                    color: #1F441E;
+                text-decoration: none;
+                }
+                .hashtag{
+                    color: #1F441E;
+                    font-family: 'Averta CY';
+                    font-size: 1,3em;
+                }
+            
+        }*/
+        
+    }
+    .section{
+        margin: 60px 80px 0;
+        font-size: 1.6em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+    }
+    
+
+    .cards{
+        margin: 30px 80px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+    
+        .cards-holder{
+            margin:0;
+
+            .card{
+                background-color: #9ECCA4;
+                border-radius: 45px;
+                border: none;
+                height:340px;
+                width:375px;
+                position: relative;
+
+                .picture{
+                    .img{width:100px;}
+                }
+                .infoPlace span{
+                    position: absolute;
+                    bottom: 30%;
+                    transform: translate(0, 30%);
+                    padding: 5%;
+
+                    .tolist_btn{
+                        display: inline-block;
+                        border: none;
+                        background-color:rgba(0, 0, 0, 0);
+                        position: absolute;
+                        bottom: 5%;
+                        right: 5%;
+                        transform: translate(0, 5%);
+                        padding: 5%;
+                    }
+                    .job-title{
+                        position: absolute;
+                        bottom: 30%;
+                        transform: translate(0, 30%);
+                        padding: 5%;
+                    } 
+                    .job-employer{
+                        position: absolute;
+                        bottom: 12%;
+                        transform: translate(0, 50%);
+                        padding: 5%;
+                    }
+                    .salary{
+                        position: absolute;
+                        bottom: 12%;
+                        right: 30%;
+                        transform: translate(0, 50%);
+                        padding: 5%;
+                    }
+                }
+            }
+
+        }
+
+        
+    }
+
+    .Popular{
+        margin: 50px 80px 0;
+        font-size: 1.6em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .Tegi{
+        margin: 50px 80px 0;
+        font-size: 1.6em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .EPLS{
+        margin: 50px 80px 0;
+        font-size: 1.6em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
