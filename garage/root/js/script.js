@@ -50,7 +50,7 @@ function moveToSignUp() {
     location.replace("/root/pages/signUp.html")
 }
 function goToStart() {
-    location.replace("/root/pages/strt.html")
+    location.replace("pages/strt.html")
 }
 function goToWiper(){
     location.replace("/root/pages/wiper.html")
